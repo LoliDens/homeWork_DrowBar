@@ -26,11 +26,11 @@ namespace homeWork_DrowBar
             
         }
 
-        static void DrowBar(int value, int x,int y) 
+        static void DrowBar(int valueBar, int xBar,int yBar) 
         {
-            Console.SetCursorPosition(y, x);
+            Console.SetCursorPosition(yBar, xBar);
             int maxBar = 10;
-            int countCells = value / maxBar;
+            int countCells = valueBar / maxBar;
 
             Console.Write("[");
 

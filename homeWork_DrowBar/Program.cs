@@ -10,43 +10,49 @@ namespace homeWork_DrowBar
     {
         static void Main(string[] args)
         {
-            int xBar;
-            int yBar;
-            int procentBar;
+            int xBarPosition;
+            int yBarPosition;
+            int procentBar;            
 
             Console.Write("Введите процент заполнености бара: ");
             procentBar = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Введите x позицию бара: ");
-            xBar = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Введите y позицию бара: ");
-            yBar = Convert.ToInt32(Console.ReadLine());
-   
-            DrowBar(procentBar, xBar, yBar);
-            Console.ReadLine(); 
-            
-        }
 
-        static void DrowBar(int valueBar, int xBar,int yBar) 
-        {
-            Console.SetCursorPosition(yBar, xBar);
-            int maxBar = 10;
-            int countCells = valueBar / maxBar;
-
-            Console.Write("[");
-
-            for (int i = 1; i <= maxBar; i++) 
+            if (procentBar < 0)
             {
-                if (i <= countCells)
-                {
-                    Console.Write("#");
-                }
-                else 
-                {
-                    Console.Write("_");
-                }
+                procentBar = 0;
+            }
+            else if (procentBar > 100)
+            {
+                procentBar = 100;
             }
 
-            Console.WriteLine("]");
+            Console.Write("Введите x позицию бара: ");
+            xBarPosition = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите y позицию бара: ");
+            yBarPosition = Convert.ToInt32(Console.ReadLine());
+   
+            DrowBar(procentBar, xBarPosition, yBarPosition);
+            Console.ReadLine();             
+        }
+
+        static void DrowBar(int valueBar, int xBarPosition,int yBarPosition) 
+        {
+            Console.SetCursorPosition(yBarPosition, xBarPosition);
+            int maxBar = 10;
+            int countCells = valueBar * maxBar / 100;
+            string bar = "";
+
+            for (int i = 0; i < countCells; i++)
+            {
+                bar += '#';
+            }
+
+            for (int i = countCells; i < maxBar; i++)
+            {
+                bar += '_';
+            }
+
+            Console.WriteLine($"[{bar}]");
         }
     }
 }
